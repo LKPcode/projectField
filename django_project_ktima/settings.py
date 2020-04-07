@@ -34,7 +34,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR , "uploads")
 
 INSTALLED_APPS = [
     'main_app.apps.MainAppConfig',
-    'front_end.apps.FrontEndConfig',
+    'serve_web_app.apps.FrontEndConfig',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework.permissions',
