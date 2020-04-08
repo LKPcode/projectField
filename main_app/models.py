@@ -18,5 +18,7 @@ class Coordinates(models.Model):
     field = models.ForeignKey(Field , on_delete=models.CASCADE , default=None)
     x_value = models.DecimalField(max_digits=21, decimal_places=10)
     y_value = models.DecimalField(max_digits=20, decimal_places=10) 
+    world_x  =  models.DecimalField(max_digits=20, decimal_places=10 , default=0)
+    world_y =  models.DecimalField(max_digits=20, decimal_places=10, default=0)
 
     

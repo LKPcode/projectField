@@ -16,15 +16,17 @@ def parseFile():
                 xFlag = False
                 continue    
             if xFlag == True: 
-                print("X = " , line )
+               
                 result = re.findall(r'\d+\.?\d+', line)
                 result = float(result[0])
+                print("X = " , result )
                 xy["X"] = result
                 List.append(xy)
             else:
-                print("Y = " , line )
+                
                 result = re.findall(r'\d+\.?\d+', line)
                 result = float(result[0])
+                print("Y = " , result )
                 List[i]["Y"] = result
                 i = i + 1
     return List

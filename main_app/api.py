@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from rest_framework import viewsets , permissions
 from .serializers import UserSerializer, FieldSerializer, CoordinatesSerializer
 from rest_framework.views import APIView
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, authentication_classes, permission_classes 
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
@@ -34,6 +36,23 @@ class CoordinatesViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = CoordinatesSerializer
 
+
+class CoordinatesView(APIView):
+
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None):      
+        return Response({"ok": "get"})
+
+    def post(self, request, format=None):      
+        return Response({"ok": "post"})
+
+    def delete(self, request, format=None):      
+        return Response({"ok": "delete"})
+
+    def put(self, request, format=None):      
+        return Response({"ok": "put"})
 
 
 
@@ -80,11 +99,11 @@ def get_fields(request, format=None):
 
 
 #get Coordinates of Field
+#@authentication_classes([TokenAuthentication])
+#@permission_classes([IsAuthenticated])
 @api_view(["POST"])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
 def get_coordinates_of_field(request, format=None):
-    user = request.user
+    #user = request.user
     field = Field.objects.filter(pk=request.data["id"]).first()
     coordinates = Coordinates.objects.filter(field=field)
     serializer = CoordinatesSerializer(coordinates, many=True)

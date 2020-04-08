@@ -37,9 +37,7 @@ import ImageGalery from '@/components/ImageGalery.vue'
 
 export default {
   name: "MapInfo",
-  props:{
-    field: Object
-  },
+  props:["field"],
   components:{
       ImageGalery
   }

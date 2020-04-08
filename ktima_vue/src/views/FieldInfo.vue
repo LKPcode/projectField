@@ -11,7 +11,7 @@
      </div>
 
      <div class="map">
-       <Map/>
+       <Map :coordinates="getCoordinates"/>
 
      </div>
 
@@ -50,12 +50,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["fetchField"])
+    ...mapActions(["fetchField" , "fetchCoordinates"]),
   },
-  computed: mapGetters(["getField"]),
+  computed: mapGetters(["getField" , "getCoordinates"]), 
   created() {
       this.id = this.$route.params.id;
       this.fetchField(this.id);
+      this.fetchCoordinates(this.id);
   },
 }
 </script>
