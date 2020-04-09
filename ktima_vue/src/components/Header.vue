@@ -2,9 +2,8 @@
   <div class="header">
       <div class="logo" > L O G O </div>
 
-     <router-link class="router-link" to="/">Home</router-link> 
-      <router-link class="router-link" to="/field">Field</router-link>
-    
+    <router-link class="router-link" to="/">Home</router-link> 
+    <router-link class="router-link" to="/register">Register</router-link>
   </div>
 </template>
 
