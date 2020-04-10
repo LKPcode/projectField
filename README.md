@@ -18,14 +18,13 @@
 | **/user** | GET | YES|  user's info| 
 | **/user**|POST| NO| create account|
 | **/user/field** |GET |YES|Get user's fields
-|
 |**/field**|GET|NO|Get All Fields
 |**/field/:id**|GET|NO|Get field with id
 |**/field**| POST| YES |Create new Field
 |**/field/:id**|PUT|YES|Update field info
 |**/field/:id**|DELETE|YES|Delete Field
-|
 | **/xy/:id**|GET|NO|Get coordinates of field with id
 |**/xy/:id**|POST|YES|Create coordinates for field with id
-|
+
+
 >This Table is not complete. More stuff should be added in the future
