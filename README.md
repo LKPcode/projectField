@@ -8,3 +8,23 @@
  - **testing:** is a folder to test whatever we want.  More like a basket.
 
 >The Voyage to the destination is why we started in the first place
+
+## **API Documentation**
+
+**Root:**  /api
+
+ URL | Request | Authorization| Description|Status
+|--|--|--|--|--|
+| **/user** | GET | YES|  user's info| :heavy_check_mark:|
+| **/user**|POST| NO| create account|:heavy_check_mark:
+| **/user/field** |GET |YES|Get user's fields|:white_check_mark:
+|**/field**|GET|NO|Get All Fields|:heavy_check_mark:
+|**/field/:id**|GET|NO|Get field with id|:heavy_check_mark:
+|**/field**| POST| YES |Create new Field|:heavy_check_mark:
+|**/field/:id**|PUT|YES|Update field info|:white_check_mark:
+|**/field/:id**|DELETE|YES|Delete Field|:white_check_mark:
+| **/xy/:id**|GET|NO|Get coordinates of field with id|:heavy_check_mark:
+|**/xy/:id**|POST|YES|Create coordinates for field with id|:heavy_check_mark:
+
+
+>This Table is not complete. More stuff should be added in the future
