@@ -23,8 +23,8 @@
 |**/field**| POST| YES |Create new Field|:heavy_check_mark:
 |**/field/:id**|PUT|YES|Update field info|:white_check_mark:
 |**/field/:id**|DELETE|YES|Delete Field|:white_check_mark:
-| **/xy/:id**|GET|NO|Get coordinates of field with id|:white_check_mark:
-|**/xy/:id**|POST|YES|Create coordinates for field with id|:white_check_mark:
+| **/xy/:id**|GET|NO|Get coordinates of field with id|:heavy_check_mark:
+|**/xy/:id**|POST|YES|Create coordinates for field with id|:heavy_check_mark:
 
 
 >This Table is not complete. More stuff should be added in the future
