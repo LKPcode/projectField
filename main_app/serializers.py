@@ -15,7 +15,18 @@ class FieldSerializer(serializers.ModelSerializer):
         fields = [ "id" , "location", "description", "image", "surface_area", "num_of_trees" ]
 
 
+class FieldCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Field
+        fields = [ "location", "description", "image", "surface_area", "num_of_trees" ]
+
+
 class CoordinatesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Coordinates
         fields = '__all__'
+
+class CoordinatesCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Coordinates
+        fields = ["world_x", "world_y"]

@@ -14,12 +14,13 @@
               <div class="login-text-header">Welcome to LOGO</div>
             </div>
           
-          <div class="login-form" v-if="login == true">
+          <div class="login-form" v-if="state_login == true">
           
 <div class="wrap-inputs">
             <div class="email-input">
               <i class="fas fa-envelope login-icon" aria-hidden="true"></i>
               <input
+                v-model="login.email"
                 type="text"
                 placeholder="Enter Email or Username"
                 name="email"
@@ -30,6 +31,7 @@
             <div class="email-input">
               <i class="fas fa-key login-icon" aria-hidden="true"></i>
               <input
+                v-model="login.password"
                 type="password"
                 placeholder="Enter Password"
                 name="psw"
@@ -40,7 +42,7 @@
 
             <div class="login-options">
               <div class="signup-referal" @click="toggle()">Create an account</div>
-              <button class="join-sugestion-btn">LOG IN</button>
+              <button class="join-sugestion-btn" @click="sign_in()">LOG IN</button>
             </div>
 </div>
            
@@ -52,6 +54,7 @@
             <div class="email-input">
               <i class="fas fa-envelope login-icon" aria-hidden="true"></i>
               <input
+                v-model="register.email"
                 type="text"
                 placeholder="Enter Email or Username"
                 name="email"
@@ -62,6 +65,7 @@
             <div class="email-input">
               <i class="fas fa-key login-icon" aria-hidden="true"></i>
               <input
+                v-model="register.password_1"
                 type="password"
                 placeholder="Enter Password"
                 name="psw"
@@ -72,23 +76,15 @@
             <div class="email-input">
               <i class="fas fa-envelope login-icon" aria-hidden="true"></i>
               <input
+                v-model="register.password_2"
                 type="text"
-                placeholder="Enter Email or Username"
+                placeholder="Enter Password again"
                 name="email"
                 class="text-email"
                 required
               />
             </div>
-            <div class="email-input">
-              <i class="fas fa-key login-icon" aria-hidden="true"></i>
-              <input
-                type="password"
-                placeholder="Enter Password"
-                name="psw"
-                class="text-email"
-                required
-              />
-            </div>
+
             <div class="login-options">
               <div class="signup-referal" @click="toggle()">Log In</div>
               <button class="join-sugestion-btn" >Create Account</button>
@@ -106,6 +102,7 @@
 // @ is an alias to /src
 
 import Header from "@/components/Header.vue";
+import axios from 'axios'
 
 export default {
   name: "Register",
@@ -114,14 +111,42 @@ export default {
   },
   data() {
     return {
-      login: true
+      state_login: true,
+      register:{
+        email:"",
+        password_1: "",
+        password_2: ""
+      },
+      login:{
+        email:"",
+        password: ""
+      }
     };
   },
   methods: {
     toggle() {
-      this.login = !this.login;
-    }
+      this.state_login = !this.state_login;
+    },
+
+  sign_in(){
+    //var data = JSON.stringify({ username:this.login.email , password:this.login.password })
+    axios.post("http://localhost:9000/api/api-token-auth/", {username: this.login.email , password: this.login.password })
+    .then(function(response){
+      console.log(response.data.token);
+      document.cookie = "token=" + response.data.token;
+      
+    }).catch(error => {
+      console.log(error.response)
+    });
+
+
+
+
+  },
+  sign_up(){
+
   }
+    },
 };
 </script>
 
@@ -287,6 +312,7 @@ export default {
   margin-left: 20px;
   color: dodgerblue; 
   width: 50%;
+  cursor: pointer;
 }
 .signup-referal:hover {
   text-decoration: underline;

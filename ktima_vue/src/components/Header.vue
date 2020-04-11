@@ -4,6 +4,8 @@
 
     <router-link class="router-link" to="/">Home</router-link> 
     <router-link class="router-link" to="/register">Register</router-link>
+
+    
   </div>
 </template>
 
