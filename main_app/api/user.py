@@ -1,9 +1,9 @@
 from main_app.models import  Field, Coordinates
 from django.contrib.auth.models import User
 
-from ..serializers import UserSerializer, UserCreateSerializer
+from ..serializers import UserSerializer, UserCreateSerializer , FieldSerializer
 from rest_framework.views import APIView
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import TokenAuthentication 
 from rest_framework.permissions import IsAuthenticated
 
 from rest_framework.authtoken.models import Token
@@ -13,6 +13,7 @@ from rest_framework import status
 from rest_framework import viewsets , permissions
 from rest_framework.decorators import api_view
 
+from rest_framework.decorators import authentication_classes , permission_classes
 from django.core import serializers
 
 
@@ -48,3 +49,12 @@ class UserView(APIView):
  
     def delete(self , request):
         pass
+
+
+@api_view(["GET"])
+@authentication_classes((TokenAuthentication,))
+@permission_classes((IsAuthenticated, ))
+def fields_of_user(request):
+    fields = Field.objects.filter(owner=request.user)
+    serializer = FieldSerializer(fields, many=True)
+    return Response(serializer.data)

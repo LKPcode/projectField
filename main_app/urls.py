@@ -1,6 +1,6 @@
 from rest_framework import routers
-from main_app.api.user import UserView
 
+from main_app.api.user import UserView , fields_of_user
 from main_app.api.field import FieldView 
 from main_app.api.coordinates import  CoordinatesView
 
@@ -12,6 +12,7 @@ router = routers.DefaultRouter()
 #add APIViews Here
 urlpatterns = [
     #path('auth/', ExampleView.as_view()),
+    path('user/fields/' , fields_of_user),
     path('user/', UserView.as_view()),
     path('user/login/', views.obtain_auth_token),
     path('fields/', FieldView.as_view()),

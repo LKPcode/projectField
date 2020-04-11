@@ -17,7 +17,7 @@
 |--|--|--|--|--|
 | **/user** | GET | YES|  user's info| :heavy_check_mark:|
 | **/user**|POST| NO| create account|:heavy_check_mark:|
-|**/user/login**| POST|Get authorization token|:heavy_check_mark:|
+|**/user/login**| POST|YES|Get authorization token|:heavy_check_mark:|
 | **/user/field** |GET |YES|Get user's fields|:white_check_mark:
 |**/field**|GET|NO|Get All Fields|:heavy_check_mark:
 |**/field/:id**|GET|NO|Get field with id|:heavy_check_mark:
