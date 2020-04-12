@@ -16,7 +16,7 @@ urlpatterns = [
     path('user/', UserView.as_view()),
     path('user/login/', views.obtain_auth_token),
     path('fields/', FieldView.as_view()),
-    path('fields/<int:id>', FieldView.as_view()),
+    path('fields/<int:id>/', FieldView.as_view()),
     path('xy/', CoordinatesView.as_view()),
     path('xy/<int:id>', CoordinatesView.as_view())
 ]

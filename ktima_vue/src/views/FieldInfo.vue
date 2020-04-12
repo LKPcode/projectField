@@ -5,7 +5,7 @@
 
    <div class="content">
      <div class="info">
-       <MapInfo :field="{}"/>
+       <MapInfo :field="state.field"/>
 
        id: {{id}}
      </div>
@@ -46,11 +46,13 @@ export default {
   },
   data(){
     return{
-      id: 1
+      id: 1,
+      state: this.$testStore.fields.state
     }
   },
   created() {
       this.id = this.$route.params.id;
+      this.$testStore.fields.getField(this.id);
   },
 }
 </script>

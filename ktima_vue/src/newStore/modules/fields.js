@@ -1,4 +1,4 @@
-
+import axios from 'axios'
     
 const fields = {
     state: {
@@ -23,14 +23,39 @@ const fields = {
         },{
             id: 7,
             location: "Corfu"
-        }]
-    },
+        }],
 
-        addfield(newNumber) {
-            this.state.fieldList.push(newNumber);
+        field:{}
+
+    },
+    async getField(id){
+        try{
+            const response = await axios.get("http://localhost:9000/api/fields/" + id);
+            console.log(response.data)
+            this.state.field = response.data[0];
+            return true;
+        }catch(error){
+            console.log("Could not get field info with id:" + id);
+            return false;
         }
 
-    
+    }
+
+    /* Change the structure type of coordinates.
+     var list = []
+        var coo = []
+        var coordinates = response.data
+        console.log(response.data)
+        for(var i=0; i< coordinates.length; i++ ){
+          coo.push(parseFloat(coordinates[i]["world_x"]))
+          coo.push(parseFloat(coordinates[i]["world_y"]))
+          list.push(coo)
+         
+          console.log(coo)
+           coo = []
+        }
+        console.log(list)
+    */
     
   };
   
