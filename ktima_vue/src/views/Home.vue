@@ -8,7 +8,7 @@
         <Fields/>
     </div>
 
-
+    <Footer />
   </div>
   
 
@@ -22,22 +22,24 @@
 import Header from '@/components/Header.vue'
 import Fields from '@/components/home/Fields.vue'
 import HomeSearch from '@/components/home/HomeSearch.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
   name: 'Home',
   components: {
     Header,
     Fields,
-    HomeSearch
+    HomeSearch,
+    Footer
   }
 }
 </script>
 
 <style scoped>
 .main-column{
-  width: 1600px;
-  margin: 20px auto;
-  background-color: cadetblue;
+  align-items: center;
+  width: 100%;
+  margin-top: 2%;
 }
 
 
