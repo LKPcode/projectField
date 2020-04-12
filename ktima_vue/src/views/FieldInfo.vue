@@ -16,6 +16,7 @@
      </div>
 
    </div>
+   <Footer />
 
 
 
@@ -31,6 +32,7 @@
 import Header from '@/components/Header.vue'
 import Map from '@/components/field-info/Map.vue'
 import MapInfo from '@/components/field-info/MapInfo.vue'
+import Footer from '@/components/Footer.vue'
 //import { mapGetters, mapActions } from "vuex";
 
 
@@ -41,7 +43,8 @@ export default {
   components: {
     Header,
     Map,
-    MapInfo
+    MapInfo,
+    Footer
    
   },
   data(){
