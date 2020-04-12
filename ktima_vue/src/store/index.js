@@ -5,10 +5,16 @@ import fieldInfo from './modules/field-info'
 
 Vue.use(Vuex)
 
+
 export default new Vuex.Store({
   state: {
+    token: "",
+    isLoggedIn: false
   },
   mutations: {
+    toggleStatus(state){
+      state.isLoggedIn = !state.isLoggedIn;
+    }
   },
   actions: {
   },

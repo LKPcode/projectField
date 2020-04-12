@@ -5,13 +5,13 @@
 
    <div class="content">
      <div class="info">
-       <MapInfo :field="getField"/>
+       <MapInfo :field="{}"/>
 
        id: {{id}}
      </div>
 
      <div class="map">
-       <Map :coordinates="getCoordinates"/>
+       <Map :coordinates="[]"/>
 
      </div>
 
@@ -31,7 +31,7 @@
 import Header from '@/components/Header.vue'
 import Map from '@/components/field-info/Map.vue'
 import MapInfo from '@/components/field-info/MapInfo.vue'
-import { mapGetters, mapActions } from "vuex";
+//import { mapGetters, mapActions } from "vuex";
 
 
 
@@ -49,14 +49,8 @@ export default {
       id: 1
     }
   },
-  methods: {
-    ...mapActions(["fetchField" , "fetchCoordinates"]),
-  },
-  computed: mapGetters(["getField" , "getCoordinates"]), 
   created() {
       this.id = this.$route.params.id;
-      this.fetchField(this.id);
-      this.fetchCoordinates(this.id);
   },
 }
 </script>

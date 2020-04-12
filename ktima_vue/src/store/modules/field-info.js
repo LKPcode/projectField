@@ -3,8 +3,8 @@ import axios from "axios";
 
 const state = {
 
-    field : 0,
-    coordinates: 0
+    field : [],
+    coordinates: []
 
 };
 

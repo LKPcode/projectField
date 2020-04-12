@@ -9,14 +9,13 @@
       </div>
 
       <div class="right">
-          <div class="login-header">
-              <div class="login-logo"></div>
-              <div class="login-text-header">Welcome to LOGO</div>
-            </div>
-          
-          <div class="login-form" v-if="state_login == true">
-          
-<div class="wrap-inputs">
+        <div class="login-header">
+          <div class="login-logo"></div>
+          <div class="login-text-header">Welcome to LOGO</div>
+        </div>
+
+        <div class="login-form" v-if="state_login == true">
+          <div class="wrap-inputs">
             <div class="email-input">
               <i class="fas fa-envelope login-icon" aria-hidden="true"></i>
               <input
@@ -42,15 +41,13 @@
 
             <div class="login-options">
               <div class="signup-referal" @click="toggle()">Create an account</div>
-              <button class="join-sugestion-btn" @click="sign_in()">LOG IN</button>
+              <button class="join-sugestion-btn" @click="sign_in(login.email , login.password)">LOG IN</button>
             </div>
-</div>
-           
           </div>
+        </div>
 
-          <div class="login-form" v-else>
-         
-<div class="wrap-inputs">
+        <div class="login-form" v-else>
+          <div class="wrap-inputs">
             <div class="email-input">
               <i class="fas fa-envelope login-icon" aria-hidden="true"></i>
               <input
@@ -87,12 +84,13 @@
 
             <div class="login-options">
               <div class="signup-referal" @click="toggle()">Log In</div>
-              <button class="join-sugestion-btn" >Create Account</button>
+              <button class="join-sugestion-btn">Create Account</button>
             </div>
-</div>
-           
           </div>
-        
+        </div>
+
+        {{store.register.state}} -- 
+        {{sign_in_response}}
       </div>
     </div>
   </div>
@@ -102,7 +100,7 @@
 // @ is an alias to /src
 
 import Header from "@/components/Header.vue";
-import axios from 'axios'
+//import axios from "axios";
 
 export default {
   name: "Register",
@@ -112,15 +110,18 @@ export default {
   data() {
     return {
       state_login: true,
-      register:{
-        email:"",
+      register: {
+        email: "",
         password_1: "",
         password_2: ""
       },
-      login:{
-        email:"",
+      login: {
+        email: "",
         password: ""
-      }
+      },
+      store: this.$testStore,
+      sign_in_response: ""
+
     };
   },
   methods: {
@@ -128,25 +129,21 @@ export default {
       this.state_login = !this.state_login;
     },
 
-  sign_in(){
-    //var data = JSON.stringify({ username:this.login.email , password:this.login.password })
-    axios.post("http://localhost:9000/api/api-token-auth/", {username: this.login.email , password: this.login.password })
-    .then(function(response){
-      console.log(response.data.token);
-      document.cookie = "token=" + response.data.token;
-      
-    }).catch(error => {
-      console.log(error.response)
-    });
-
-
-
-
-  },
-  sign_up(){
-
-  }
+    sign_in(username , password){
+        this.$testStore.register.sign_in(username, password).then(response =>{
+         this.sign_in_response = response;
+         console.log(this.sign_in_response)
+       })
     },
+
+    sign_up() {},
+    
+  },
+  
+  created(){
+    console.log(this.$testStore)
+    
+  }
 };
 </script>
 
@@ -182,17 +179,14 @@ export default {
   padding-left: 50px;
 }
 
-
-
-.wrap-inputs{
-    width: 40%;
+.wrap-inputs {
+  width: 40%;
 }
 
-
 .join-sugestion-btn {
-    width: 50%;
+  width: 50%;
   background-color: gainsboro;
-  
+
   color: black;
   border-radius: 5px;
   font-size: 0.8rem;
@@ -204,7 +198,7 @@ export default {
 .login-side-image {
   width: 20%;
   background-color: #77753a;
-  
+
   border-bottom-right-radius: 0px;
   border: 2px solid black;
   background-image: url("../../public/trees2.jpg");
@@ -226,7 +220,6 @@ export default {
   margin: 0px;
   border-radius: 5px;
   width: 100%;
- 
 }
 .text-email:focus {
   border: 2px solid white;
@@ -301,29 +294,20 @@ export default {
 }
 .login-options {
   display: flex;
-  padding:10px;
-
-
+  padding: 10px;
 }
 .signup-referal {
   font-size: 0.8rem;
   text-align: left;
-  margin: 10px ;
+  margin: 10px;
   margin-left: 20px;
-  color: dodgerblue; 
+  color: dodgerblue;
   width: 50%;
   cursor: pointer;
 }
 .signup-referal:hover {
   text-decoration: underline;
- 
 }
-
-
-
-
-
-
 
 @media only screen and (max-width: 600px) {
   .content {
@@ -333,16 +317,15 @@ export default {
     width: 100%;
     display: none;
   }
-  .right{
-      padding-left: 0px;
+  .right {
+    padding-left: 0px;
   }
   .login-text-header {
-      font-size: 1.5rem;
- 
+    font-size: 1.5rem;
   }
 
-.wrap-inputs{
+  .wrap-inputs {
     width: 95%;
-}
+  }
 }
 </style>

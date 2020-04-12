@@ -1,25 +1,23 @@
 <template>
   <div class="fields">
-    <Field v-for="field in allFields" :key="field.id" :field="field" />
+    <Field v-for="field in store.fields.state.fields" :key="field.id" :field="field" />
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+//import { mapGetters, mapActions } from "vuex";
 import Field from "@/components/home/Field.vue";
 
 export default {
   name: "Fields",
+  data(){
+    return{
+      store: this.$testStore
+    }
+  },
   components: {
     Field
   },
-  methods: {
-    ...mapActions(["fetchFields"])
-  },
-  computed: mapGetters(["allFields"]),
-  created() {
-    this.fetchFields();
-  }
 };
 </script>
 
