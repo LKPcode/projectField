@@ -29,3 +29,13 @@
 
 
 >This Table is not complete. More stuff should be added in the future
+
+## **Todos**
+
+ - Create Profile UI.
+ - Global notification popup.
+ - Rest API Response Codes.
+ - Catch response codes in Vue axios.
+ - Integrate Google Maps.
+ - Maps Responsiveness.
+
