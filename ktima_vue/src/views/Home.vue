@@ -38,8 +38,9 @@ export default {
 <style scoped>
 .main-column{
   align-items: center;
-  width: 100%;
-  margin-top: 2%;
+  width: auto;
+  padding: 2% 0;
+  padding-left: 6%;
 }
 
 

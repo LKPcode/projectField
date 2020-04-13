@@ -42,7 +42,7 @@ export default {
 .fields {
   display: grid;
   grid-template-columns: 400px 400px 400px 400px;
-  grid-template-rows: 300px 300px 300px;
+  grid-template-rows: 300px 300px;
   grid-gap: 20px;
   background-color: #fff;
   color: #444;
