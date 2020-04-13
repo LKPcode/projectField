@@ -13,7 +13,7 @@
         <l-polygon :lat-lngs="coordinates" :color="polygon.color"></l-polygon>
 
     </l-map>
-    {{coordinates}}
+   
   </div>
 </template>
 

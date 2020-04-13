@@ -14,7 +14,7 @@
           <div class="login-text-header">Welcome to LOGO</div>
         </div>
 
-        <div class="login-form" v-if="state_login == true">
+        <div v-on:keyup.enter="sign_in(login.email , login.password)" class="login-form" v-if="state_login == true">
           <div class="wrap-inputs">
             <div class="email-input">
               <i class="fas fa-envelope login-icon" aria-hidden="true"></i>
@@ -133,7 +133,18 @@ export default {
         this.$testStore.register.sign_in(username, password).then(response =>{
          this.sign_in_response = response;
          console.log(this.sign_in_response)
+         if(response==400){
+            this.$EventBus.$emit('notify', "Could not login with provided credentials ", "red");
+         }else if(response==200){
+             this.$EventBus.$emit('notify', "Logged in Succesfully", "green");
+         }else{
+           this.$EventBus.$emit('notify', "Something wierd happend", "yellow");
+         }
+        
+       }).catch(() => {
+         //this.$EventBus.$emit('notify', "Could not login with provided credentials " + error, "red");
        })
+       
     },
 
     sign_up() {},

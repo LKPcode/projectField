@@ -4,8 +4,21 @@
       
     </div>
     <router-view/>
+
+    <Notification/>
   </div>
 </template>
+
+<script>
+import Notification from '@/components/Notification.vue'
+
+export default {
+  name:"App",
+  components:{
+    Notification
+  }
+}
+</script>
 
 <style>
 #app {

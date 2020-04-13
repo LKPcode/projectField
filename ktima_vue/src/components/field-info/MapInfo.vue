@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import ImageGalery from '@/components/ImageGalery.vue'
+import ImageGalery from '@/components/field-info/ImageGalery.vue'
 
 
 export default {
