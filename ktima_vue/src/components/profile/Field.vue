@@ -8,8 +8,10 @@
             
             <div class="trees"><h2>Trees: 50</h2></div>
             <div class="type"><h2>Type: Mastixa</h2></div>
+            <div class="button"><button>Edit</button></div>
         </div>
         <div class="price"><h2>Price: 200$/3m</h2></div>
+        
     </div>
 </template>
 
@@ -51,6 +53,16 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    button{
+        background-color: green;
+        color: rgb(0, 0, 0);
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        font-size: 120%;
+        font-weight: 700;
     }
 
 </style>
