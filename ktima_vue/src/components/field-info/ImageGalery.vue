@@ -1,10 +1,10 @@
 <template>
   <div class="image-galery">
-    <img class="image" src="../../public/trees.jpeg" />
-    <img src="../../public/trees2.jpg" />
-    <img src="../../public/trees.jpeg" />
-    <img src="../../public/trees.jpeg" />
-    <img src="../../public/trees.jpeg" />
+    <img class="image" src="../../../public/trees.jpeg" />
+    <img src="../../../public/trees2.jpg" />
+    <img src="../../../public/trees.jpeg" />
+    <img src="../../../public/trees.jpeg" />
+    <img src="../../../public/trees.jpeg" />
   </div>
 </template>
 

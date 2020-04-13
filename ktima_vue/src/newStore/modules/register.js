@@ -16,11 +16,11 @@ const register = {
             console.log(response)
             this.state.token = response.data.token;
             this.state.isLoggedin = true;
-            return true;
+            return response.status;
 
         } catch (error) {
-            console.log("Error: " + error.request.status + this.getCookie("token"))
-            return false;
+            console.log("Error: " + error.request.status + "   " + this.getCookie("token"))
+            return error.request.status;
         }
 
 

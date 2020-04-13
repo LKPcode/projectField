@@ -2,7 +2,7 @@
   <div class="footer">
       <div class="logo"> LOGO </div>
 
-      <div class="email" ><h3>Email: s.zaoudis@gmail.com</h3></div>
+      <div class="email" ><h3>Email: example@email.com</h3></div>
 
       <a class="topPage" href="#"><i class="fas fa-angle-up"></i></a>
     

@@ -25,8 +25,8 @@ class UserView(APIView):
         if request.user.is_authenticated:
             serialize = UserSerializer(request.user)
             
-            return Response(serialize.data)
-        else:  return Response({"detail": "You are not logged in"})
+            return Response(serialize.data , status=status.HTTP_200_OK)
+        else:  return Response({"detail": "You are not logged in"},status=status.HTTP_401_UNAUTHORIZED)
 
     def post(self, request, **kwargs): #Create new user
         serialized = UserCreateSerializer(data=request.data)
@@ -57,4 +57,4 @@ class UserView(APIView):
 def fields_of_user(request):
     fields = Field.objects.filter(owner=request.user)
     serializer = FieldSerializer(fields, many=True)
-    return Response(serializer.data)
+    return Response(serializer.data , status=status.HTTP_200_OK)

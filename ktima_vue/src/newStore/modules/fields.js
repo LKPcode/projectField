@@ -33,10 +33,22 @@ const fields = {
             const response = await axios.get("http://localhost:9000/api/fields/" + id);
             console.log(response.data)
             this.state.field = response.data[0];
-            return true;
+            return response.status;
         }catch(error){
             console.log("Could not get field info with id:" + id);
-            return false;
+            return error.response.status;
+        }
+
+    },
+    async getFields(){
+        try{
+            const response = await axios.get("http://localhost:9000/api/fields/");
+            console.log(response.data)
+            this.state.fields = response.data;
+            return response.status;
+        }catch(error){
+            console.log("Could not get fields: " + error.response.status);
+            return error.response.status;
         }
 
     }

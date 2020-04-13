@@ -22,11 +22,12 @@ class FieldView(APIView):
         if id==None: #/api/fields
             fields = Field.objects.all()
             serializer = FieldSerializer(fields, many=True)
-            return Response(serializer.data)
+            return Response(serializer.data , status=status.HTTP_200_OK)
         else: #/api/fields/id
             fields = Field.objects.filter(pk=id)
+            if not fields: return Response({"detail":"This field does not exist"} , status=status.HTTP_404_NOT_FOUND)
             serializer = FieldSerializer(fields, many=True)
-            return Response(serializer.data)
+            return Response(serializer.data ,status=status.HTTP_200_OK)
         return Response("ok")
 
     def post(self, request ): 

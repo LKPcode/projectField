@@ -8,8 +8,10 @@ import testStore from './newStore'
 
 Vue.config.productionTip = false
 
+const EventBus = new Vue();
+Vue.prototype.$EventBus = EventBus;
 
-Vue.prototype.$testStore = testStore
+Vue.prototype.$testStore = testStore;
 
 new Vue({
   router,

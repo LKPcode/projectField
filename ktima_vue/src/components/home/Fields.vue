@@ -18,6 +18,22 @@ export default {
   components: {
     Field
   },
+  methods:{
+    getFields(){
+      this.$testStore.fields.getFields().then((response) => {
+        if(response==200){
+           this.$EventBus.$emit('notify', "Loaded Fields Successfully", "green");
+        }else{
+           this.$EventBus.$emit('notify', "Could not load fields", "red");
+        }
+      }).catch(() => {
+        this.$EventBus.$emit('notify', "Something wierd happened", "yellow");
+      });
+    }
+  },
+  created(){
+    this.getFields();
+  }
 };
 </script>
 

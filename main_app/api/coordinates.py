@@ -24,9 +24,9 @@ class CoordinatesView(APIView):
             field = Field.objects.filter(pk=id).first()
             coordinates = Coordinates.objects.filter(field=field)
             serializer = CoordinatesSerializer(coordinates, many=True)
-            return Response(serializer.data)
-        else: return Response({"detail": "Did not provide an ID of field"})
-        return Response("ok")
+            return Response(serializer.data , status=status.HTTP_200_OK)
+        else: return Response({"detail":"Did not provide an ID of field"} , status=status.HTTP_400_BAD_REQUEST)
+        
 
     def post(self, request , **kwargs ):  #/api/fields/id
         if request.user.is_authenticated==True:

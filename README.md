@@ -33,8 +33,8 @@
 ## **Todos**
 
  - Create Profile UI.
- - Global notification popup.
- - Rest API Response Codes.
+ - Global notification popup. :heavy_check_mark:
+ - Rest API Response Codes. :heavy_check_mark:
  - Catch response codes in Vue axios.
  - Integrate Google Maps.
  - Maps Responsiveness.

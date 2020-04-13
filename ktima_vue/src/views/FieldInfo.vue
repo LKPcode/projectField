@@ -16,8 +16,7 @@
      </div>
 
    </div>
-   <Footer />
-
+   
 
 
   </div>
@@ -32,10 +31,6 @@
 import Header from '@/components/Header.vue'
 import Map from '@/components/field-info/Map.vue'
 import MapInfo from '@/components/field-info/MapInfo.vue'
-import Footer from '@/components/Footer.vue'
-//import { mapGetters, mapActions } from "vuex";
-
-
 
 
 export default {
@@ -43,9 +38,7 @@ export default {
   components: {
     Header,
     Map,
-    MapInfo,
-    Footer
-   
+    MapInfo
   },
   data(){
     return{
@@ -53,9 +46,20 @@ export default {
       state: this.$testStore.fields.state
     }
   },
+  methods:{
+    getField(id){
+      this.$testStore.fields.getField(id).then((response)=>{
+        if(response==200){
+          this.$EventBus.$emit('notify', "Loaded Field Successfully", "green");
+        }else{
+          this.$EventBus.$emit('notify', "There was an error loading this field", "red");
+        }
+      });
+    }
+  },
   created() {
       this.id = this.$route.params.id;
-      this.$testStore.fields.getField(this.id);
+      this.getField(this.id);
   },
 }
 </script>
