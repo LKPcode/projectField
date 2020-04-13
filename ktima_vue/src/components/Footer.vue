@@ -4,7 +4,7 @@
 
       <div class="email" ><h3>Email: s.zaoudis@gmail.com</h3></div>
 
-      <a class="topPage" href="#"><img src="../../public/TopPage.png"></a>
+      <a class="topPage" href="#"><i class="fas fa-angle-up"></i></a>
     
   </div>
 </template>
@@ -20,6 +20,8 @@ export default {
 <style scoped>
 
 .footer{
+    margin: 0 0;
+    padding: 0 0;
     position: relative;
     display:flex;
     width: 100%;
@@ -28,17 +30,10 @@ export default {
     justify-content: flex-end;
     align-items: stretch;
     z-index: 10;
-    
 }
 
-.topPage:after {
-    transition: 5ms;
-}
-
-.topPage  img{
-    height: 60px;
-    background-color: #000;
-    border-radius: 30%;
+.fas{
+    color: #fff;
 }
 
 .email {

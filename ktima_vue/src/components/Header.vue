@@ -4,6 +4,7 @@
 
     <router-link class="router-link" to="/">Home</router-link> 
     <router-link class="router-link" to="/register">Register</router-link>
+    <div class="image"><router-link class="router-link" to="/profile"><img class="profile-image" src="../../public/profile.jpg"></router-link></div>
 
     
   </div>
@@ -49,5 +50,15 @@ export default {
     color: white;
     font-size: 1.8rem;
     font-weight: bold;
+}
+
+.image{
+  height: 100%;
+
+}
+
+.router-link .profile-image{
+  height: 100%;
+  border-radius: 50%;
 }
 </style>
