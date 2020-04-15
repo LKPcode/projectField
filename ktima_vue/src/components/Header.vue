@@ -58,7 +58,8 @@ export default {
 }
 
 .router-link .profile-image{
-  height: 100%;
+  height: 60%;
   border-radius: 50%;
+  margin-top: 10%;
 }
 </style>

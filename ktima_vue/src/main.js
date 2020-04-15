@@ -3,6 +3,14 @@ import App from './App.vue'
 import router from './router'
 //import store from './store'
 import 'leaflet/dist/leaflet.css';
+import * as VueGoogleMaps from "vue2-google-maps";
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: "AIzaSyDeBnxUhnelwB7qeJGQ4BdghrGP-1pupeg",
+    libraries: "places" // necessary for places input
+  }
+});
 
 import testStore from './newStore'
 

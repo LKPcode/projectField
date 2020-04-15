@@ -11,7 +11,7 @@
      </div>
 
      <div class="map">
-       <Map :coordinates="[]"/>
+       <GoogleMap />
 
      </div>
 
@@ -29,7 +29,7 @@
 <script>
 // @ is an alias to /src
 import Header from '@/components/Header.vue'
-import Map from '@/components/field-info/Map.vue'
+import GoogleMap from '@/components/field-info/GoogleMap.vue'
 import MapInfo from '@/components/field-info/MapInfo.vue'
 
 
@@ -37,7 +37,7 @@ export default {
   name: 'FieldInfo',
   components: {
     Header,
-    Map,
+    GoogleMap,
     MapInfo
   },
   data(){
@@ -54,6 +54,8 @@ export default {
         }else{
           this.$EventBus.$emit('notify', "There was an error loading this field", "red");
         }
+      }).catch(()=>{
+        this.$EventBus.$emit('notify', "Something wierd happened", "yellow");
       });
     }
   },

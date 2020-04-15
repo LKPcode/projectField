@@ -46,14 +46,25 @@
           </div>
         </div>
 
-        <div class="login-form" v-else>
+        <div v-on:keyup.enter="sign_up(register)" class="login-form" v-else>
           <div class="wrap-inputs">
             <div class="email-input">
               <i class="fas fa-envelope login-icon" aria-hidden="true"></i>
               <input
                 v-model="register.email"
                 type="text"
-                placeholder="Enter Email or Username"
+                placeholder="Enter Email"
+                name="email"
+                class="text-email"
+                required
+              />
+            </div>
+            <div class="email-input">
+              <i class="fas fa-envelope login-icon" aria-hidden="true"></i>
+              <input
+                v-model="register.username"
+                type="text"
+                placeholder="Enter Username"
                 name="email"
                 class="text-email"
                 required
@@ -84,7 +95,7 @@
 
             <div class="login-options">
               <div class="signup-referal" @click="toggle()">Log In</div>
-              <button class="join-sugestion-btn">Create Account</button>
+              <button class="join-sugestion-btn" @click="sign_up(register)">Create Account</button>
             </div>
           </div>
         </div>
@@ -112,6 +123,7 @@ export default {
       state_login: true,
       register: {
         email: "",
+        username: "",
         password_1: "",
         password_2: ""
       },
@@ -146,8 +158,23 @@ export default {
        })
        
     },
-
-    sign_up() {},
+     sign_up(register){
+        this.$testStore.register.sign_up(register).then(response =>{
+         this.sign_in_response = response;
+         console.log(this.sign_in_response)
+         if(response==400){
+            this.$EventBus.$emit('notify', "Could not create user with provided credentials ", "red");
+         }else if(response==201){
+             this.$EventBus.$emit('notify', "Created user and Logged in Succesfully", "green");
+         }else{
+           this.$EventBus.$emit('notify', "Something wierd happend", "yellow");
+         }
+        
+       }).catch(() => {
+         //this.$EventBus.$emit('notify', "Could not login with provided credentials " + error, "red");
+       })
+       
+    },
     
   },
   
